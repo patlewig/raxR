@@ -4,3 +4,8 @@
 .httr-oauth
 .DS_Store
 .quarto
+.cache/
+.config/
+.java/
+.local/
+.sh_history

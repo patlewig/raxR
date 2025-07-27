@@ -1,0 +1,159 @@
+---
+title: "raxR case study"
+author: "Grace Patlewicz"
+format: html
+editor: visual
+---
+
+## Making Acute Oral Toxicity Read-Across Predictions
+
+Read-across is a well established data gap filling technique used within analogue and category approaches. This approach relies on a chemical with existing data values, known as the source analogue, being used to make a prediction for a 'similar' chemical, the target, that lacks that same property information. Typically the source analogue and target substance are structurally similar. However the justification of the similarity with respect to the property of interest relies on more than just structural similarity, other considerations such as similarity in physicochemical profile, mechanistic profile, metabolism profile etc also play a role. This case study will consider how a read-across is undertaken from the perspective of identifying candidate analogues on the basis of structural similarity (analogue identification), evaluating those analogues from both a structural and physicochemical perspective before making a read-across prediction. The prediction itself will rely on the Generalised Read-Across (GenRA) approach whereby a similarity weighted toxicity calculation is performed. The toxicity endpoint of interest in this example is focused on acute oral toxicity, specifically the estimates of the dose that causes lethality in rats after a single exposure. The dataset used for this case study was previously used in the TAME modules. It was originally compiled and published in the following manuscript:
+Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approach (GenRA) to quantitative predictions: A case study using acute oral toxicity data. Comput Toxicol. 2019 Nov 1;12(November 2019):10.1016/j.comtox.2019.100097. doi: 10.1016/j.comtox.2019.100097. PMID: [33623834](https://pubmed.ncbi.nlm.nih.gov/33623834/).
+
+## Case study
+The case study will illustrate how to make read-across predictions for the same chemical using 2 ways. Initially, a minimal R Shiny App will be used to make acute oral toxicity prediction of the following compound 4-tert-Butylcyclohexyl prop-2-enoate (DTXSID001004378, SMILES: CC(C)CCCCCCCCCCC(=O)OCC(O)CO. The same predictions using the raxR package that underpins the R Shiny App will also be used.
+
+## Running the minimal R Shiny App
+
+When launched the app is structured in 4 distinct browser tabs. The first tab provides an overview of the acute toxicity dataset, both in terms of the distribution of log molar acute LD50 values as well as a tabulation of all the values with their chemical identifier expressed as a dtxsid (the Distributed Structure Searchable Toxicity Database Substance Identifier or DSSTox Substance Identifier).
+
+- What do you notice about the distribution of the acute lethality values?
+- What is the range of spread of values?
+
+## Analogue ID
+
+In moving to the second tab, the first step of the read-across workflow can be initiated. Herein the target chemical of interest will be inserted into the relevant text boxes to capture 1) the SMILES, the 1D structural representation of the target chemical and 2) the dtxsid as identifier. The third field is the number of source analogues to return. As a default, the number of source analogues will be kept at 10 given the size of the acute lethality dataset.
+
+1. Copy/Paste the identifier and SMILES values provided.
+
+DTXSID001004378, SMILES: CC(C)CCCCCCCCCCC(=O)OCC(O)CO
+
+- What happens?
+
+Below the text field boxes, a table is now presented which shows the 10 closest source analogues on the basis of structural similarity and what their pairwise similarity is. The sim score is the Tanimoto similarity on the basis of circular fingerprints calculated using the Rcdk package. 
+
+Behind the scenes, chemical fingerprints are generated for the target chemical, then a pairwise similarity calculation is performed to return the 10 source analogues with the highest similarity scores.
+
+- What do you notice about the scores? What impact do these scores have on the prediction being generated?
+
+## Physicochemical profile
+
+One of the considerations that is important in evaluating the suitability of the source analogues is how they are similar with respect to their physicochemical profile as this will have a bearing on whether those analogues partition similarly.
+
+Clicking on the physicochemical profile shows a table and a boxplot of a selection of properties (normalised for the purposes of plotting all on the same figure). The properties are the MW, the number of hydrogen bond donors and acceptors (HBD, HBA) and the log of the octanol/water partition coefficient (logKow). The predictions of these properties are made using the Rcdk package.  
+
+- what can you say about the boxplot with strip plot overlay in terms of the consistency of the source analogues relative to each other and the target substances?
+- what can you say about the reliability and validity of the physicochemical properties?
+
+The table populates if any of the source analogues have physicochemical properties that exceed a three times the standard deviation of any of the properties.
+
+- Try changing the SMILES and identifier to see if any source analogues fall outside of the threshold.
+
+## Read-across prediction
+
+The last tab is updated with the GenRA prediction for the target substance of interest. The pred_act represents the predicted activity score derived by taking the sum of all the pairwise similarities of the source analogues and multiplying them by their LD50_LM value and then dividing this by the sum of the pairwise similarities. This similarity weighted average is effectively taking a mean from the source analogues but adjusting each acute toxicity value by how similar that source analogue is to the target chemical itself. This ensures that an analogue that is not that similar i.e. has a low Tanimoto score is not influencing the toxicity prediction as much as a source analogue that is much more structurally similar.
+
+The pred_act (-1.689) is expressed in a -log molar value.
+
+Take the MW of DTXSID001004378 (210.317) and work out what the LD50 in the usual units of mg/kg are. Is this substance likely to present a high concern for toxicity by the oral route?
+
+- GHS Classification criteria for acute toxicity categorise substances into 1 of 5 categories based on ranges of LD50 values. Category 5 is an anticipated LD50 between 2000-5000 mg/kg, very low concern whereas Category 1 represents the most severe toxicity with a LD50 equal or less than 5 mg/kg. Category 4 represents the next lowest concern with a range between 300-2000 mg/kg. 
+
+DTXSID001004378 has a predicted LD50 of 614 mg/kg, which is a predicted Category 4.
+
+## Using raxR to generate a prediction
+
+Minimal packages that are needed are devtools, rcdk, tidyverse, ggplot. 
+To load the functions from raxR, make sure devtools is installed.
+
+```{r}
+library(rcdk)
+library(tidyverse)
+library(devtools)
+
+load_all()
+
+```
+
+This should load all the functions associated with raxR to facilitate a prediction.
+
+## Preprocessing
+
+First load the datasets of interest. These will read in the data files associated with the acute toxicity dataset. Two functions are called from raxR to process the acute toxicity data to harmonise its field names before generate_fingerprints and generate_physchem are used to calculate the chemical fingerprints and physicochemical properties for the source analogues.
+
+```{r}
+data_path <- system.file("extdata", "small_acute_processed.csv", package = "raxR")
+data_path_1 <- system.file("extdata", "smi_acute.csv", package = "raxR")
+toxicity_data <- read.csv(data_path)
+toxicity_data <- toxicity_data %>% select(dtxsid,  LD50_LM)
+source_analogues <- process_substances(data_path_1)
+source_FP <- generate_fingerprints(source_analogues)
+source_chem <- generate_physchem(generate_mol(source_analogues))
+```
+
+## Load the target substance
+
+Here the first substance in file 'targets.csv', DTXSID001375068, will be used as our target substance of interest. The file will be read and the head function will be used to extract the first substance.
+
+```{r}
+data_path_2 <- system.file("extdata", "targets.csv", package = "raxR")
+targets <- process_substances(data_path_2)
+test_chem <- head(targets, 1)
+```
+
+## Generate the chemical fingerprints for the target substance
+
+```{r}
+target_FP <- generate_fingerprints(test_chem)
+
+```
+
+## Identify candidate analogues
+
+Here the get_analogues function will be used to find the 10 closest analogues. The function requires the source analogue fingerprints, the target chemical fingerprints and the number of analogues.
+
+```{r}
+test_analogues <- get_analogues(source_FP, target_FP[[1]], 10)
+
+```
+
+- Take a look at the top 10 analogues. 
+
+## Physicochemical profile
+
+Generate the physicochemical profile for the target substance using the generate_physchem function.
+
+```{r}
+target_chem <- generate_physchem(generate_mol(test_chem))
+
+```
+
+Now the physicochemical profile of the target substance will be compared with that of the source analogues. To do that the create_pchem function will be used. This expects the physicochemical information generated for all the source analogues, what the source analogues are for the target substance of interest as well as the target substance's physicochemical information. Then the prep_df function is used to convert the dataframe generated to a long form to facilitate plotting and for the 3SD threshold to be determined.
+
+```{r}
+all_pchem <- create_pchem(source_chem, test_analogues, target_chem)                   
+
+```
+
+```{r}
+long_pchem <- prep_df(all_pchem) 
+filter_sd(long_pchem)
+```
+- Are there any source analogues that exceed the thresholds?
+
+```{r}
+add_scale(long_pchem) %>% ggplot(aes(x = property, y = property_scaled)) + geom_boxplot(outlier.shape = NA
+                                                                                        ) + geom_jitter()
+```
+
+## Make Read-across prediction
+
+```{r}
+with_data <- test_analogues %>% left_join(toxicity_data, by = 'dtxsid') %>% drop_na("LD50_LM")
+wtavg(id = "DTXSID001375068", with_data, outcome_col = 'LD50_LM')
+```
+The GenRA prediction was determined to be -1.689 which is a -log molar equivalent. The MW of the target substance is 302.4501. What is the LD50 in mg/kg and what GHS Category does it fall under?
+
+- The LD50 in mg/kg is 14779, i.e. a category 5, lowest concern level.
+
+

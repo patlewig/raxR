@@ -1,11 +1,18 @@
 Package: raxR
-Title: What the Package Does (One Line, Title Case)
+Title: Minimal package to perform similarity weighted activity predictions akin to what is available in GenRA
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Grace", "Patlewicz", email= "grace@comptoxscience.com", role = c("aut", "cre"),comment = c(ORCID = "0000-0003-3863-9689"))
+Description: Identifies analogues based on rcdk chemical fingerprints, calculated physicochemical properties and predicts similarity weighted activity predictions using acute oral rat toxicity data.
+License: `use_mit_license()`
 Encoding: UTF-8
+Imports:
+    rcdk,
+    tidyverse,
+    ggplot2,
+    dplyr,
+    readr,
+    readxl,
+    tibble
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

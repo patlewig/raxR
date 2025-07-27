@@ -33,9 +33,29 @@ process_substances <- function(substance_path) {
       dtxsid = all_of(id_col[1])
     ) %>%
     select(dtxsid, smiles)
-  
+  substances <- substances %>% distinct(dtxsid, .keep_all = TRUE)
   return(substances)
 }
+
+#' Generate Morgan fingerprints for a set of substances characterised by their rcdk molecular objects
+#' @import rcdk
+#' @param smiles smiles
+#' @return A rcdk fingerprint object
+#' @export
+generate_fp <- function(smiles, dtxsid){
+  substance_mol <- parse.smiles(as.character(smiles))
+  names(substance_mol) <- as.character(dtxsid)
+  single_fps <- lapply(substance_mol, get.fingerprint, type = "circular")
+  
+  tibble(
+    dtxsid = names(single_fps),
+    smiles = smiles,
+    fingerprint = single_fps
+  )
+  
+}
+
+
 
 
 #' Generate Morgan fingerprints for a set of substances characterised by their rcdk molecular objects
