@@ -1,0 +1,10 @@
+name: shiny-app
+title:
+username: patlewig
+account: patlewig
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15129093
+bundleId: 10683165
+url: https://patlewig.shinyapps.io/shiny-app/
+version: 1
