@@ -4457,13 +4457,13 @@
       "checksum": "597d5c04083b508402b5eb9c13ae191b"
     },
     ".local/share/rstudio/history_database": {
-      "checksum": "5d9f9661caaa286473099f934aee032e"
+      "checksum": "6453aa8a015d6791a810944c7ae0a882"
     },
     ".local/share/rstudio/monitored/lists/command_palette_mru": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
     ".local/share/rstudio/monitored/lists/file_mru": {
-      "checksum": "c0fa092e32c2df0321d368de9042afd4"
+      "checksum": "a911f5bc762c389d83356a1803bec7b4"
     },
     ".local/share/rstudio/monitored/lists/help_history_links": {
       "checksum": "e9e809dd7f4f2f9c5d70f4e37d1e1ca4"
@@ -4479,9 +4479,6 @@
     },
     ".local/share/rstudio/monitored/lists/user_dictionary": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    ".local/share/rstudio/notebooks/39C85344-README/1/056187D0013539a7/chunks.json": {
-      "checksum": "64f57f5e2339e8ef08f158e02d5f41fb"
     },
     ".local/share/rstudio/notebooks/39C85344-README/1/s/chunks.json": {
       "checksum": "64f57f5e2339e8ef08f158e02d5f41fb"
@@ -4532,7 +4529,7 @@
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
     ".local/share/rstudio/notebooks/paths": {
-      "checksum": "a22fc0f3a430065c306fa88986858d43"
+      "checksum": "d63a450653119c7389462bb7257b4cb9"
     },
     ".local/share/rstudio/pcs/files-pane.pper": {
       "checksum": "de06fc013870a38be44fce959c05feca"
@@ -4696,11 +4693,17 @@
     ".local/share/rstudio/sources/prop/35B0029B": {
       "checksum": "3423e68573f2d482beef81234cd49a60"
     },
+    ".local/share/rstudio/sources/prop/42B04F47": {
+      "checksum": "9fbaffda861759cbf1826d46205afdbf"
+    },
+    ".local/share/rstudio/sources/prop/4D51A4B8": {
+      "checksum": "6a653973565270f8d9be075f3b7769fe"
+    },
     ".local/share/rstudio/sources/prop/5CD7A5F9": {
       "checksum": "fb3348de5bfc094002415093ed119db9"
     },
     ".local/share/rstudio/sources/prop/60857CAA": {
-      "checksum": "a09a10acdc8d8f2b4f548c8aa539b139"
+      "checksum": "a57500059a2f33dc8a4f196212027b6e"
     },
     ".local/share/rstudio/sources/prop/82C68EB7": {
       "checksum": "4dc09cab16c7f4a9b955f727c4788103"
@@ -4726,11 +4729,14 @@
     ".local/share/rstudio/sources/prop/E3E452D1": {
       "checksum": "44cfa0dd79331650313e8fc1c80005e5"
     },
+    ".local/share/rstudio/sources/prop/E7176194": {
+      "checksum": "9fbaffda861759cbf1826d46205afdbf"
+    },
     ".local/share/rstudio/sources/prop/EBD7B281": {
       "checksum": "216ba39fce91144fea745080b9581970"
     },
     ".local/share/rstudio/sources/prop/INDEX": {
-      "checksum": "0ab91b1a8a125ce596b58823ebb37f99"
+      "checksum": "550ab7134f4cf2a273275bdd7c87da0c"
     },
     ".local/share/rstudio/sources/session-013539a7/03D22A65-contents": {
       "checksum": "37b35629b7aef012e8f212cfe6acf3ed"
@@ -4789,6 +4795,9 @@
     ".local/share/rstudio/sources/session-013539a7/392CC3DE-contents": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
+    ".local/share/rstudio/sources/session-013539a7/4AE50FC5-contents": {
+      "checksum": "97364c0a6f565597173a9fc12767cb5b"
+    },
     ".local/share/rstudio/sources/session-013539a7/50855DF5-contents": {
       "checksum": "4a4447130a5c4dbd64dd07e0b6c877af"
     },
@@ -4801,9 +4810,6 @@
     ".local/share/rstudio/sources/session-013539a7/627ACB61-contents": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
-    ".local/share/rstudio/sources/session-013539a7/6353B459": {
-      "checksum": "df6da158b6aaa19c43883d53a21f3fc2"
-    },
     ".local/share/rstudio/sources/session-013539a7/6353B459-contents": {
       "checksum": "ed3d8828a47cb4b1fa8933464199efd9"
     },
@@ -4815,6 +4821,9 @@
     },
     ".local/share/rstudio/sources/session-013539a7/6D471809-contents": {
       "checksum": "0b66b4926b91454610e19788cbe64ca0"
+    },
+    ".local/share/rstudio/sources/session-013539a7/6E8C330F-contents": {
+      "checksum": "97364c0a6f565597173a9fc12767cb5b"
     },
     ".local/share/rstudio/sources/session-013539a7/787EA992-contents": {
       "checksum": "aff517cb329ad444e4ec83a1b7bd0536"
@@ -4848,6 +4857,9 @@
     },
     ".local/share/rstudio/sources/session-013539a7/99E1BAC1-contents": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    ".local/share/rstudio/sources/session-013539a7/9AC690C6-contents": {
+      "checksum": "9675251b28ae2553cd2e635bb3907bd3"
     },
     ".local/share/rstudio/sources/session-013539a7/9E2A216E-contents": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -4897,6 +4909,12 @@
     ".local/share/rstudio/sources/session-013539a7/EF38C2A4-contents": {
       "checksum": "e39c612612e2505ddb0e5743de0a863a"
     },
+    ".local/share/rstudio/sources/session-013539a7/F1E8370F": {
+      "checksum": "01db62dbbc9ae3863945631ec2796c21"
+    },
+    ".local/share/rstudio/sources/session-013539a7/F1E8370F-contents": {
+      "checksum": "97364c0a6f565597173a9fc12767cb5b"
+    },
     ".local/share/rstudio/sources/session-013539a7/F355D11E-contents": {
       "checksum": "2f1f8f917abac11aa251aefa11680450"
     },
@@ -4924,6 +4942,9 @@
     "DESCRIPTION": {
       "checksum": "df44c32c46b240106e239a5d48e82d31"
     },
+    "inst/app.R": {
+      "checksum": "97364c0a6f565597173a9fc12767cb5b"
+    },
     "inst/extdata/small_acute_processed.csv": {
       "checksum": "0b66b4926b91454610e19788cbe64ca0"
     },
@@ -4932,9 +4953,6 @@
     },
     "inst/extdata/targets.csv": {
       "checksum": "e39c612612e2505ddb0e5743de0a863a"
-    },
-    "inst/shiny/app.R": {
-      "checksum": "97364c0a6f565597173a9fc12767cb5b"
     },
     "man/create_pchem.Rd": {
       "checksum": "d78bfdb87888500adc43058f90aeda53"
