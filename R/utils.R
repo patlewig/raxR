@@ -60,7 +60,11 @@ wtavg <- function(id, df,outcome_col) {
   tibble(dtxsid = id, pred_act = value )
 }
 
-add_scale <- function (df) {
+#' Helper function to scale physicochemical properties
+#' @import tidyverse
+#' @param df The dataframe with relevant property information in long form
+#' @export
+add_scale <- function(df) {
   normalize <- function(x) {
     (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
   }
@@ -80,7 +84,7 @@ add_scale <- function (df) {
 #' @import readxl
 #' @import readr
 #' @import rcdk
-#' @param df The df with physchem properties for target and analogues
+#' @param df A dataframe in long format containing the columns: `dtxsid`, `property`, `role`, and `property_value`
 #' @export
 
 prep_df <- function(df){

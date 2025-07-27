@@ -7,7 +7,7 @@
 prep_df(df)
 }
 \arguments{
-\item{df}{The df with physchem properties for target and analogues}
+\item{df}{A dataframe in long format containing the columns: \code{dtxsid}, \code{property}, \code{role}, and \code{property_value}}
 }
 \description{
 Helper function to calculate similarity weighted activity
