@@ -4457,13 +4457,13 @@
       "checksum": "597d5c04083b508402b5eb9c13ae191b"
     },
     ".local/share/rstudio/history_database": {
-      "checksum": "6453aa8a015d6791a810944c7ae0a882"
+      "checksum": "3624975ae47c34bd2d28d9fd3864ee51"
     },
     ".local/share/rstudio/monitored/lists/command_palette_mru": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
     ".local/share/rstudio/monitored/lists/file_mru": {
-      "checksum": "a911f5bc762c389d83356a1803bec7b4"
+      "checksum": "77078a01b71c564964c9740fda931563"
     },
     ".local/share/rstudio/monitored/lists/help_history_links": {
       "checksum": "e9e809dd7f4f2f9c5d70f4e37d1e1ca4"
@@ -4535,7 +4535,7 @@
       "checksum": "de06fc013870a38be44fce959c05feca"
     },
     ".local/share/rstudio/pcs/source-pane.pper": {
-      "checksum": "9b000247162eee275e73028c01845db8"
+      "checksum": "aec2e5e1d1eb37bcf97d2e4628ccfbf9"
     },
     ".local/share/rstudio/pcs/windowlayoutstate.pper": {
       "checksum": "1197df27c7ce6ebf3eaa7299535ef814"
@@ -4706,7 +4706,7 @@
       "checksum": "a57500059a2f33dc8a4f196212027b6e"
     },
     ".local/share/rstudio/sources/prop/82C68EB7": {
-      "checksum": "4dc09cab16c7f4a9b955f727c4788103"
+      "checksum": "2992e1a21f6321d345e016a101216f5f"
     },
     ".local/share/rstudio/sources/prop/9DF77837": {
       "checksum": "cf73c1761991eb0acf9f89702855ca96"
@@ -4900,6 +4900,12 @@
     ".local/share/rstudio/sources/session-013539a7/DB5B3D60-contents": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
+    ".local/share/rstudio/sources/session-013539a7/DC780302": {
+      "checksum": "728f100f090a36d2d2be038bf52c79e5"
+    },
+    ".local/share/rstudio/sources/session-013539a7/DC780302-contents": {
+      "checksum": "b83067174170bed70d453befb2e49f2b"
+    },
     ".local/share/rstudio/sources/session-013539a7/E57CD04F-contents": {
       "checksum": "4600b01be88731e3cf28aedb1a2658be"
     },
@@ -4940,7 +4946,7 @@
       "checksum": "72135ee64f5c332605fb3593f384fc00"
     },
     "DESCRIPTION": {
-      "checksum": "df44c32c46b240106e239a5d48e82d31"
+      "checksum": "b83067174170bed70d453befb2e49f2b"
     },
     "inst/app.R": {
       "checksum": "97364c0a6f565597173a9fc12767cb5b"
